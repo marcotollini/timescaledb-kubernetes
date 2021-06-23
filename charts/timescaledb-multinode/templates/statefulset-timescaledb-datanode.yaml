@@ -44,7 +44,7 @@ spec:
         env:
         - name: POSTGRESQL_CUSTOM_PARAMETERS
           value: |
-            {{- range $key, $value := .Values.postgresql.parameters }}
+            {{- range $key, $value := .Values.postgresql.parametersDN }}
             {{ printf "%s = '%s'" $key ($value | toString) }}
             {{- end }}
         - name: POSTGRES_PASSWORD
@@ -105,7 +105,7 @@ spec:
           mountPath: "{{ .Values.persistentVolume.mountPath }}"
           subPath: "{{ .Values.persistentVolume.subPath }}"
         resources:
-{{ toYaml .Values.resources | indent 10 }}
+{{ toYaml .Values.resourcesDN | indent 10 }}
     {{- with .Values.nodeSelector }}
       nodeSelector:
 {{ toYaml . | indent 8 }}
