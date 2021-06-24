@@ -37,7 +37,8 @@ env:
 
 persistentVolume:
   enabled: true
-  size: 5G
+  sizeAN: 5G
+  sizeDN: 5G
   ## database data Persistent Volume Storage Class
   ## If defined, storageClassName: <storageClass>
   ## If set to "-", storageClassName: "", which disables dynamic provisioning
@@ -52,8 +53,24 @@ persistentVolume:
   accessModes:
     - ReadWriteOnce
 
-resourcesAN: {}
-resourcesDN: {}
+resourcesAN:
+  # If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  limits:
+    cpu: 2
+    memory: 8192Mi
+  requests:
+    cpu: 1500m
+    memory: 7000Mi
+resourcesDN:
+  # If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  limits:
+    cpu: 4
+    memory: 16384Mi
+  requests:
+    cpu: 3
+    memory: 14000Mi
   # If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   # limits:
@@ -109,7 +126,9 @@ postgresql:
     temp_file_limit: 1GB
 
 # https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector
-nodeSelector: {}
+nodeSelectorAN: {}
+nodeSelectorDN: {}
+nodeSelectorJob: {}
 
 # https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
 tolerations: []

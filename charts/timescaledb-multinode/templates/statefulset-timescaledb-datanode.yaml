@@ -106,7 +106,7 @@ spec:
           subPath: "{{ .Values.persistentVolume.subPath }}"
         resources:
 {{ toYaml .Values.resourcesDN | indent 10 }}
-    {{- with .Values.nodeSelector }}
+    {{- with .Values.nodeSelectorDN }}
       nodeSelector:
 {{ toYaml . | indent 8 }}
     {{- end }}
@@ -145,7 +145,7 @@ spec:
 {{ toYaml .Values.persistentVolume.accessModes | indent 8 }}
         resources:
           requests:
-            storage: "{{ .Values.persistentVolume.size }}"
+            storage: "{{ .Values.persistentVolume.sizeDN }}"
       {{- if .Values.persistentVolume.storageClass }}
       {{- if (eq "-" .Values.persistentVolume.storageClass) }}
         storageClassName: ""

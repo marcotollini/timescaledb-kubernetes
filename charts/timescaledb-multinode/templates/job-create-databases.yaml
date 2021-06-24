@@ -1,6 +1,6 @@
 # This file and its contents are licensed under the Apache License 2.0.
 # Please see the included NOTICE for copyright information and LICENSE for a copy of the license.
-
+{{- $root := . -}}
 {{- range $index, $dbname := .Values.postgresql.databases }}
 ---
 apiVersion: batch/v1
@@ -66,6 +66,10 @@ https://www.postgresql.org/docs/current/app-psql.html#APP-PSQL-INTERPOLATION
             secretKeyRef:
               name: {{ template "timescaledb.accessname" $ }}
               key: password-superuser
+    {{- with $.Values.nodeSelectorJob }}
+      nodeSelector:
+{{ toYaml . | indent 8 }}
+    {{- end }}
       restartPolicy: OnFailure
   backoffLimit: 2
 ...
