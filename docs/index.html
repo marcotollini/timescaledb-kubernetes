@@ -2806,14 +2806,14 @@
                         <pre
                             class="rouge highlight"><code data-lang="bash">helm repo add cosmos-timescale https://marcotollini.github.io/timescaledb-kubernetes/   <i class="conum" data-value="1"></i><b>(1)</b>
 helm repo update    <i class="conum" data-value="2"></i><b>(2)</b>
-helm <span class="nb">install </span>confluentinc/cp-helm-charts <span class="nt">--name</span> my-confluent <span class="nt">--version</span> 0.6.0    <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
+helm <span class="nb">install </span>cosmos-timescale/timescaledb-multinode <span class="nt">--name</span> timescale  <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
                     </div>
                 </div>
                 <div class="colist arabic">
                     <table>
                         <tr>
                             <td><i class="conum" data-value="1"></i><b>1</b></td>
-                            <td>Add <code>confluentinc</code> helm charts repo</td>
+                            <td>Add <code>Cosmos edition of Timescale</code> helm charts repo</td>
                         </tr>
                         <tr>
                             <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -2821,8 +2821,8 @@ helm <span class="nb">install </span>confluentinc/cp-helm-charts <span class="nt
                         </tr>
                         <tr>
                             <td><i class="conum" data-value="3"></i><b>3</b></td>
-                            <td>Install Confluent Platform with release name «my-confluent» and version
-                                <code>0.6.0</code></td>
+                            <td>Install Timescale with release name «timescale» and version
+                                <code>latest</code></td>
                         </tr>
                     </table>
                 </div>
